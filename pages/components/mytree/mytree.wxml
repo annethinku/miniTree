@@ -1,0 +1,26 @@
+<view>
+  <view class='flexbox'>
+    <view wx:if='{{ isBranch }}' bindtap='toggle'>
+    <!-- {{ open ? '[ - ]' : '[ + ]' }}  -->
+       <block wx:if="{{open}}">
+          <image src='../../images/up.png' class='imgSty'></image>
+       </block>
+       <block wx:else>
+         <image src='../../images/down.png' class='imgSty'></image>
+       </block>
+    </view>
+    <view wx:else>
+    <!-- [ · ]  -->
+    </view>
+    <view class="imgSty02 {{currentId==model.id?'':'bor'}}" bindtap='tapItem' data-itemid='{{ model.id }}'>
+     <block wx:if="{{currentId==model.id}}">
+       <image src='../../images/check01.png' class='imgSty02'></image>
+     </block>
+     <block wx:else></block>
+    </view>
+    <text bindtap='tapItem' data-itemid='{{ model.id }}' class='nameSty'>{{ model.name }}</text>
+  </view>
+  <view style='padding-left: 50rpx;' wx:if='{{ isBranch }}' hidden='{{ !open }}'>
+    <mytree wx:for='{{ model.children }}' wx:key='id' model='{{ item }}'></mytree>
+  </view>
+</view>

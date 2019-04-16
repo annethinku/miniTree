@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mytree": "../mytree/mytree"
+  },
+  "component":true
+}
